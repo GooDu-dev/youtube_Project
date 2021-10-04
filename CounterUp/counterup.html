@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .container .header{
+            display: flex;
+            flex-direction: column;
+        }
+        .container .content{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+        }
+        .block img{
+            width: 8vw;
+            height: 8vw;
+        }
+        .block h1{
+            text-align: center;
+            font-size: 3vw;
+        }
+        .header .block img{
+            width: 12vw;
+            height: 12vw;
+        }
+        .header .block h1{
+            font-size: 3.5vw;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <div class="block">
+                <img src="./asset/picture/visual-studio.png" alt="">
+                <h1 goal="2580" class="num">0</h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="block">
+                <img src="./asset/picture/arduino-pngrepo-com.png" alt="">
+                <h1 goal="1644" class="num">0</h1>
+            </div>
+            <div class="block">
+                <img src="./asset/picture/microbit-pngrepo-com.png" alt="">
+                <h1 goal="583" class="num">0</h1>
+            </div>
+            <div class="block">
+                <img src="./asset/picture/unity-pngrepo-com.png" alt="">
+                <h1 goal="50" class="num">0</h1>
+            </div>
+            <div class="block">
+                <img src="./asset/picture/website.png" alt="">
+                <h1 goal="99999" class="num">0</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        counter();
+        function counter(){
+            let numbers = document.querySelectorAll(".num");
+            const COUNT_SPEED = 200;
+            numbers.forEach(number => {
+                function updateCounter(){
+                    let goal = Number(number.getAttribute("goal"));
+                    let numberText = +number.innerHTML;
+                    
+                    let plusNum = Math.ceil(goal / COUNT_SPEED);
+                    
+                    if(numberText < goal){
+                        number.innerHTML = numberText + plusNum;
+                        setTimeout(updateCounter, 1)
+                    }
+                    else if(numberText >= goal){
+                        number.innerHTML = goal;
+                    }
+                }
+                updateCounter();
+            })
+        }
+    </script>
+</body>
+</html>
